@@ -23,6 +23,10 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
                     <Button x:Name="ProductsNavButton" Content="Товары" Style="{StaticResource AccentButton}" Click="ProductsNav_Click"/>
                     <Button x:Name="OrdersNavButton" Content="Заказы" Style="{StaticResource SecondaryButton}" Click="OrdersNav_Click"/>
+                    <Button x:Name="ExportExcelButton" Content="Экспорт Excel" Style="{StaticResource SecondaryButton}"
+                            Click="ExportExcel_Click" Visibility="Collapsed"/>
+                    <Button x:Name="ImportExcelButton" Content="Импорт Excel" Style="{StaticResource AccentButton}"
+                            Click="ImportExcel_Click" Visibility="Collapsed"/>
                     <Button Content="Выход" Style="{StaticResource SecondaryButton}" Click="Logout_Click"/>
                 </StackPanel>
             </Grid>
