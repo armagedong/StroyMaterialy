@@ -1,0 +1,57 @@
+<Window x:Class="StroyMaterialy.Views.OrderEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Заказ — редактирование"
+        Height="520" Width="560"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                    <TextBlock Text="Номер заказа"/><TextBox x:Name="NumberBox"/>
+                    <TextBlock Text="Дата заказа"/><DatePicker x:Name="OrderDatePicker"/>
+                    <TextBlock Text="Дата выдачи"/><DatePicker x:Name="DeliveryDatePicker"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="8,0,0,0">
+                    <TextBlock Text="Пункт выдачи"/><ComboBox x:Name="PickupCombo" DisplayMemberPath="Address"/>
+                    <TextBlock Text="ФИО клиента"/><TextBox x:Name="ClientBox"/>
+                    <TextBlock Text="Код получения"/><TextBox x:Name="CodeBox"/>
+                    <TextBlock Text="Статус"/><TextBox x:Name="StatusBox"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+
+        <GroupBox Grid.Row="1" Header="Позиции заказа" Margin="0,12,0,12">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,8">
+                    <ComboBox x:Name="ProductCombo" Width="280" DisplayMemberPath="Name"/>
+                    <TextBox x:Name="QtyBox" Width="50" Margin="8,0,0,0" Text="1"/>
+                    <Button Content="Добавить" Style="{StaticResource AccentButton}" Click="AddItem_Click"/>
+                    <Button Content="Удалить позицию" Style="{StaticResource SecondaryButton}" Click="RemoveItem_Click"/>
+                </StackPanel>
+                <DataGrid x:Name="ItemsGrid" AutoGenerateColumns="False" IsReadOnly="True">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Артикул" Binding="{Binding Article}" Width="80"/>
+                        <DataGridTextColumn Header="Товар" Binding="{Binding ProductName}" Width="*"/>
+                        <DataGridTextColumn Header="Кол-во" Binding="{Binding Quantity}" Width="60"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </DockPanel>
+        </GroupBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Сохранить" Style="{StaticResource AccentButton}" Click="Save_Click"/>
+            <Button Content="Отмена" Style="{StaticResource SecondaryButton}" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>
